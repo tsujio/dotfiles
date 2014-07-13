@@ -1,0 +1,17 @@
+[core]
+	autocrlf = true
+	quotepath = off
+	editor = vim -c \"set fenc=utf-8\"
+
+[pull]
+	rebase = true
+
+[color]
+	ui = auto
+
+[gui]
+	encoding = utf-8
+
+[user]
+	name = tsujio
+	email = tsujio@net.ist.i.kyoto-u.ac.jp
