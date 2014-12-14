@@ -244,6 +244,11 @@
 
 (global-set-key "\C-c\C-l" 'toggle-truncate-lines)
 
+;;;; Default indent setting
+(setq-default c-basic-offset 4
+              tab-width 4
+              indent-tabs-mode nil)
+
 ;;;; ac-math
 (require 'ac-math)
 
