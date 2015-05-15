@@ -398,6 +398,15 @@
              (setq indent-tabs-mode nil)
              )))
 
+;;;; cperl-mode
+(defalias 'perl-mode 'cperl-mode)
+(let ((indent-level 2))
+  (setq cperl-indent-level indent-level)
+  (setq cperl-close-paren-offset (- indent-level)))
+(setq cperl-indent-parens-as-block t)
+(setq cperl-indent-subs-specially nil)
+(add-to-list 'auto-mode-alist '("\\.cgi$" . cperl-mode))
+
 ;;;; init-loader
 (require 'init-loader)
 (setq init-loader-show-log-after-init nil)
