@@ -123,8 +123,6 @@
 ;;;; Tabbar
 (require 'tabbar)
 (tabbar-mode)
-;(global-set-key "\M-]" 'tabbar-forward)
-;(global-set-key "\M-[" 'tabbar-backward)
 
 ;; Not use mouse wheel on tabs
 (tabbar-mwheel-mode nil)
@@ -158,16 +156,6 @@
  :background (face-attribute 'mode-line :background)
  :foreground (face-attribute 'mode-line :foreground)
  :box nil)
-
-;; Move buffer by Ctrl + Tab
-;(global-set-key
-; [(control tab)] 'next-buffer)
-;(global-set-key
-; [(control shift tab)] 'previous-buffer)
-(global-set-key
- [(control tab)] 'tabbar-forward)
-(global-set-key
- [(control shift tab)] 'tabbar-backward)
 
 ;;;; Buffer functions and preferences
 ;; Window Resizer

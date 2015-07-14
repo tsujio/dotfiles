@@ -22,3 +22,9 @@
   (isearch-update))
 (define-key isearch-mode-map [compend] 'w32-isearch-update)
 (define-key isearch-mode-map [kanji] 'isearch-toggle-input-method)
+
+;;;; Move buffer by Ctrl + Tab
+(global-set-key
+ [(control tab)] 'tabbar-forward)
+(global-set-key
+ [(control shift tab)] 'tabbar-backward)
