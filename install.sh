@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOT_FILES=( .zshrc .gitconfig .emacs.d )
+DOT_FILES=( .zshrc .gitconfig.linux .emacs.d )
 
 # Create symlinks into home directory.
 for file in ${DOT_FILES[@]}; do
