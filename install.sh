@@ -1,16 +1,7 @@
 #!/bin/bash
 
-DOT_FILES=( .zshrc .gitconfig.linux .emacs.d )
+script_dir=$(cd $(dirname $0); pwd)
 
-# Create symlinks into home directory.
-for file in ${DOT_FILES[@]}; do
-    if [ -e ${HOME}/${file} ]; then
-	echo "${HOME}/${file} exists." 1>&2
-	continue
-    fi
-
-    ln -s ${HOME}/dotfiles/${file} ${HOME}/${file}
-    if [ $? -eq 0 ]; then
-	echo "Created link ${file}."
-    fi
-done
+[ -e ${HOME}/.zshrc ] || ln -s $script_dir/.zshrc ${HOME}/.zshrc
+[ -e ${HOME}/.gitconfig ] || ln -s $script_dir/.gitconfig.linux ${HOME}/.gitconfig
+[ -e ${HOME}/.emacs.d ] || ln -s $script_dir/.emacs.d ${HOME}/.emacs.d
