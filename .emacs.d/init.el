@@ -34,6 +34,7 @@
 	  web-mode
 	  scala-mode2
 	  init-loader
+      yaml-mode
 	  ))
 
   ;; Install packages
