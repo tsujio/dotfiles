@@ -2,16 +2,16 @@
 (when (require 'package nil t)
   ;; Add package-archives
   (add-to-list 'package-archives
-	       '("melpa" . "http://melpa.milkbox.net/packages/") t)
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (add-to-list 'package-archives
-	       '("marmalade" .
-		 "http://marmalade-repo.org/packages/"))
+               '("marmalade" .
+                 "http://marmalade-repo.org/packages/"))
 
   ;; Setup elisp directory
   (let ((target-dir "~/.emacs.d/elisp"))
     ;; Make directory if not exists
     (if (not (file-exists-p target-dir))
-	(make-directory target-dir))
+        (make-directory target-dir))
     ;; Add to load-path
     (add-to-list 'load-path target-dir)
     ;; Set as install directory
@@ -22,31 +22,31 @@
 
   ;; My Packages
   (setq my-packages
-	'(undo-tree
-	  tabbar
-	  auto-complete
-	  ac-math
-	  flymake-cursor
-	  flymake-python-pyflakes
-	  flymake-ruby
-	  ruby-electric
-	  yasnippet
-	  web-mode
-	  scala-mode2
-	  init-loader
-      yaml-mode
-	  ))
+        '(undo-tree
+          tabbar
+          auto-complete
+          ac-math
+          flymake-cursor
+          flymake-python-pyflakes
+          flymake-ruby
+          ruby-electric
+          yasnippet
+          web-mode
+          scala-mode2
+          init-loader
+          yaml-mode
+          ))
 
   ;; Install packages
   (when (require 'cl nil t)
     (let ((not-installed-list
-	   (remove-if (lambda (x) (package-installed-p x))
-		      my-packages)))
+           (remove-if (lambda (x) (package-installed-p x))
+                      my-packages)))
       (when not-installed-list
-	(package-refresh-contents)
-	(dolist (x not-installed-list)
-	  (package-install x)
-	  (message "installed %s." x))))))
+        (package-refresh-contents)
+        (dolist (x not-installed-list)
+          (package-install x)
+          (message "installed %s." x))))))
 
 ;;;; Preference
 ;; Window
@@ -72,7 +72,7 @@
 (setq frame-title-format (format "Emacs@%s : %%f" (system-name)))
 
 ;; Suppress beep
-;(setq visible-bell t)
+                                        ;(setq visible-bell t)
 (setq ring-bell-function 'ignore)
 
 ;; Set default encoding to UTF-8
@@ -133,10 +133,10 @@
 
 ;; Disable a button on the left side
 (dolist (btn '(tabbar-buffer-home-button
-	       tabbar-scroll-left-button
-	       tabbar-scroll-right-button))
+               tabbar-scroll-left-button
+               tabbar-scroll-right-button))
   (set btn (cons (cons "" nil)
-		 (cons "" nil))))
+                 (cons "" nil))))
 
 ;; Interval between tabs
 (setq tabbar-separator '(0.8))
@@ -212,7 +212,7 @@
 (defun scroll-down-with-lines ()
   "" (interactive) (scroll-down 1))
 (defun scroll-up-with-lines ()
-   "" (interactive) (scroll-up 1))
+  "" (interactive) (scroll-up 1))
 (global-set-key [wheel-up] 'scroll-down-with-lines)
 (global-set-key [wheel-down] 'scroll-up-with-lines)
 
@@ -300,12 +300,12 @@
 
   ;; Set backup dir to backup-dir
   (setq backup-directory-alist
-	(cons (cons "\\.*$" (expand-file-name backup-dir))
-	      backup-directory-alist))
+        (cons (cons "\\.*$" (expand-file-name backup-dir))
+              backup-directory-alist))
 
   ;; Set auto-save dir to backup-dir
   (setq auto-save-file-name-transforms
-	`((".*" ,(expand-file-name backup-dir) t))))
+        `((".*" ,(expand-file-name backup-dir) t))))
 
 ;;;; Delete old backups
 (defun delete-old-backups ()
@@ -314,10 +314,10 @@
   (while backups
     (setq file (concat backup-dir (car backups)))
     (if (and (file-regular-p file)
-	     (time-less-p (nth 5 (file-attributes file))
-			  (time-subtract (current-time) (days-to-time 31))))
-	(progn (delete-file file)
-	       (message "deleted: %s" file))
+             (time-less-p (nth 5 (file-attributes file))
+                          (time-subtract (current-time) (days-to-time 31))))
+        (progn (delete-file file)
+               (message "deleted: %s" file))
       )
     (setq backups (cdr backups))))
 
@@ -334,17 +334,17 @@
   (interactive)
   (let* ((extension (insert-encoding-get-file-extension (buffer-name)))
          (comment-char (insert-encoding-get-comment-char extension))
-	 (pragma (format "%s -*- coding: %S -*-" comment-char (my-short-buffer-file-coding-system))))
+         (pragma (format "%s -*- coding: %S -*-" comment-char (my-short-buffer-file-coding-system))))
     (progn (beginning-of-line)
-    (progn (beginning-of-line)
-           (insert-string pragma)))))
+           (progn (beginning-of-line)
+                  (insert-string pragma)))))
 
 (defun my-short-buffer-file-coding-system (&optional default-coding)
   (let ((coding-str (format "%S" buffer-file-coding-system)))
     (cond ((string-match "shift-jis" coding-str) 'shift_jis)
-	  ((string-match "euc-jp" coding-str) 'euc-jp)
-	  ((string-match "utf-8" coding-str) 'utf-8)
-	  (t (or default-coding 'utf-8)))))
+          ((string-match "euc-jp" coding-str) 'euc-jp)
+          ((string-match "utf-8" coding-str) 'utf-8)
+          (t (or default-coding 'utf-8)))))
 
 (defun insert-encoding-get-comment-char (extension)
   (let ((sharp-langs '("sh" "pl" "t" "pm" "rb" "py"))
@@ -361,7 +361,7 @@
 
 ;;;; flymake Tex
 (defun flymake-get-tex-args (file-name)
-    (list "latex" (list "-file-line-error-style" file-name)))
+  (list "latex" (list "-file-line-error-style" file-name)))
 
 ;;;; web-mode
 ;; Set target exts
@@ -378,7 +378,7 @@
 (defun add-web-mode-snippets ()
   (let ((my-snippet-dir "~/.emacs.d/snippets"))
     (if (not (find my-snippet-dir yas-snippet-dirs))
-      (add-to-list 'yas-snippet-dirs my-snippet-dir))))
+        (add-to-list 'yas-snippet-dirs my-snippet-dir))))
 
 (add-web-mode-snippets)
 
@@ -415,4 +415,3 @@
 (require 'init-loader)
 (setq init-loader-show-log-after-init nil)
 (init-loader-load "~/.emacs.d/inits")
-
