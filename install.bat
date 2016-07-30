@@ -1,7 +1,4 @@
 @ECHO OFF
-SETLOCAL ENABLEDELAYEDEXPANSION
-FOR %%f IN (.zshrc,.gitconfig.windows,.emacs.d) DO (
-  SET f=%%f
-  MKLINK %UserProfile%\!f:.windows=! %~dp0%%f
-  ECHO Created %UserProfile%\!f:.windows=!
-)
+MKLINK %UserProfile%\.zshrc %~dp0.zshrc
+MKLINK %UserProfile%\.gitconfig %~dp0.gitconfig.windows
+MKLINK /D %UserProfile%\.emacs.d %~dp0.emacs.d
