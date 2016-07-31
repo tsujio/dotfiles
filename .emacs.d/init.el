@@ -74,6 +74,10 @@
                                         ;(setq visible-bell t)
 (setq ring-bell-function 'ignore)
 
+;; Font setting
+;; (you should install Ricty font at first)
+(add-to-list 'default-frame-alist '(font . "Ricty Diminished"))
+
 ;; Set default encoding to UTF-8
 (set-language-environment 'utf-8)
 (set-default-coding-systems 'utf-8)
