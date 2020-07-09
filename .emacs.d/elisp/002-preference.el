@@ -18,9 +18,11 @@
 ;; (you should install Ricty font at first)
 (add-to-list 'default-frame-alist '(font . "Ricty Diminished"))
 
-;; Set default encoding to UTF-8
-(set-language-environment 'utf-8)
-(set-default-coding-systems 'utf-8)
+;; Set default encoding to UTF-8 and unix style line encoding
+(setq-default buffer-file-coding-system 'utf-8-unix)
+
+;; Auto reload buffer
+(global-auto-revert-mode 1)
 
 ;; Highlight corresponding parenthesis
 (show-paren-mode 1)
