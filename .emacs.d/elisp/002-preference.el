@@ -2,6 +2,17 @@
 (set-face-background 'default "black")
 (set-face-foreground 'default "gray")
 
+;; Frame size
+(set-frame-size (selected-frame) 90 40)
+
+;; Frame potision
+(let ((geometry (car (car (display-monitor-attributes-list)))))
+  (let ((center-x (/ (nth 3 geometry) 2))
+        (center-y (/ (nth 4 geometry) 2)))
+    (let ((x (- center-x (/ (frame-outer-width) 2)))
+          (y (- center-y (/ (frame-outer-height) 2))))
+      (set-frame-position (selected-frame) x y))))
+
 ;; Line number
 (global-linum-mode)
 
@@ -61,3 +72,6 @@
 (dolist (d '(face lines space-before-tab
                   indentation empty space-after-tab tab-mark))
   (setq whitespace-style (delq d whitespace-style)))
+
+;;; Prevent Extraneous Tabs
+(setq-default indent-tabs-mode nil)
