@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (auto-complete web-mode scala-mode tabbar undo-tree fsharp-mode))))
+    (json-mode markdown-mode yaml-mode auto-complete web-mode scala-mode tabbar undo-tree fsharp-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
